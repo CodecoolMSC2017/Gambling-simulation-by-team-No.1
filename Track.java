@@ -40,9 +40,12 @@ public class Track{
         return survivors;
     }
     public Pilot createPilot(String[] attrib) {
-        return new Pilot(attrib[0], attrib[1], Integer.parseInt(attrib[2]),new Car(attrib[4], Integer.parseInt(attrib[5]), Integer.parseInt(attrib[6])));
+        return new Pilot(attrib[0], attrib[1], Integer.parseInt(attrib[2]),new Car(attrib[4], Integer.parseInt(attrib[5]), Integer.parseInt(attrib[6])), Double.parseDouble(attrib[7]));
     }
     public static Track createTrack(){
         return new Track("Hungaroring", "data.csv");
+    }
+    public Pilot[] getPilots(){
+        return pilots;
     }
 }
