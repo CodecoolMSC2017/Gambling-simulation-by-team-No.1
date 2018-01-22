@@ -12,11 +12,16 @@ public class Simulator {
     public Result run() {
         Track track = Track.createTrack();
         Pilots[] myPilots = track.getPilots();
+        Logger logger = new Logger();
         for (Pilot pilot : myPilots) {
             basicScore(pilot);
-            randomEvents(pilot);
-        }
+            String str = randomEvents(pilot);
+            if(str!= null){
+                logger.Log("Ide jön a time stamp", str);
+            }
+        
 
+            }
     }
 
     public void basicScore(Pilot pilot) {
