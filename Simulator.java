@@ -19,6 +19,8 @@ public class Simulator {
             if(str!= null){
                 logger.Log("Ide jön a time stamp", str);
             }
+            
+
         
 
             }

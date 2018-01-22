@@ -5,7 +5,6 @@ public class Statictics {
 
     public Statictics(int numOfSims){
         this.numOfSims = numOfSims;
-
     }
 
     public void setNumOfSims(){
