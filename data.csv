@@ -1,23 +1,23 @@
-Lewis Hamilton;GBR;Mercedes;363
-Sebastian Vettel;GER;Ferrari;317
-Valtteri Bottas;FIN;Mercedes;305
-Kimi Räikkönen;FIN;Ferrari;205
-Daniel Ricciardo;AUS;Red Bull Racing TAG Heuer;200
-Max Verstappen;NED;Red Bull Racing TAG Heuer;168
-Sergio Perez;MEX;Force India Mercedes;100
-Esteban Ocon;FRA;Force India Mercedes;87
-Carlos Sainz;ESP;Renault;54
-Nico Hulkenberg;GER;Renault;43
-Felipe Massa;BRA;Williams Mercedes;43
-Lance Stroll;CAN;Williams Mercedes;40
-Romain Grosjean;FRA;Haas Ferrari;28
-Kevin Magnussen;DEN;Haas Ferrari;19
-Fernando Alonso;ESP;McLaren Honda;17
-Stoffel Vandoorne;BEL;McLaren Honda;13
-Jolyon Palmer;GBR;Renault;8
-Pascal Wehrlein;GER;Sauber Ferrari;5
-Daniil Kvyat;RUS;Toro Rosso;5
-Marcus Ericsson;SWE;Sauber Ferrari;0
-Pierre Gasly;FRA;Toro Rosso;0
-Antonio Giovinazzi;ITA;Sauber Ferrari;0
-Brendon Hartley;NZL;Toro Rosso;0
+Lewis Hamilton;GBR;100;Mercedes;100;1,35
+Sebastian Vettel;GER;93;Ferrari;98;1.33
+Valtteri Bottas;FIN;90;Mercedes;100;1.35
+Kimi Räikkönen;FIN;88;Ferrari;98;1.33
+Daniel Ricciardo;AUS;88;Red Bull Racing TAG Heuer;98;1.35
+Max Verstappen;NED;88;Red Bull Racing TAG Heuer;98;1.35
+Sergio Perez;MEX;83;Force India Mercedes;98;1.35
+Esteban Ocon;FRA;80;Force India Mercedes;98;1.35
+Carlos Sainz;ESP;73;Renault;97;1.35
+Nico Hulkenberg;GER;71;Renault;97;1.35
+Felipe Massa;BRA;71;Williams Mercedes;97;1.36
+Lance Stroll;CAN;70;Williams Mercedes;97;1.36
+Romain Grosjean;FRA;68;Haas Ferrari;96;1.35
+Kevin Magnussen;DEN;61;Haas Ferrari;96;1.35
+Fernando Alonso;ESP;60;McLaren Honda;96;1.36
+Stoffel Vandoorne;BELa;60;McLaren Honda;96;1.36
+Jolyon Palmer;GBR;56;Renault;96;1.37
+Pascal Wehrlein;GER;52;Sauber Ferrari;96;1.37
+Daniil Kvyat;RUS;52;Toro Rosso;95;1.36
+Marcus Ericsson;SWE;50;Sauber Ferrari;96;1.37
+Pierre Gasly;FRA;50;Toro Rosso;95;1.36
+Antonio Giovinazzi;ITA;50;Sauber Ferrari;96;1.37
+Brendon Hartley;NZL;50;Toro Rosso;95;1.36
