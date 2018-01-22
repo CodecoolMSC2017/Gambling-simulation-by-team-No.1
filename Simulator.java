@@ -10,24 +10,27 @@ public class Simulator {
     }
 
     public Result run() {
-        Track track = Track.createTrack();
-        Pilots[] myPilots = track.getPilots();
+        int max = 0;
+        Pilot first;
         Logger logger = new Logger();
+        Pilot[] myPilots = simulation.getPilots();
         for (Pilot pilot : myPilots) {
             basicScore(pilot);
             String str = randomEvents(pilot);
-            if(str!= null){
+            if (str != null) {
                 logger.Log("Ide jön a time stamp", str);
             }
-            
-
-        
-
+            if (pilot.getPoint() > max){
+                max = pilot.getPoint();
+                first = pilot;
             }
+
+        }
+        return Result(first,);
     }
 
     public void basicScore(Pilot pilot) {
-        pilot.setPoint((pilot.getXp() * 2 + pilot.car.getTopSpeed()) / 2);
+        pilot.setPoint((pilot.getXp() * 2 + pilot.getCar().getTopSpeed()) / pilot.getCar().getAcceleration());
     }
 
     public String randomEvents(Pilot pilot) {
