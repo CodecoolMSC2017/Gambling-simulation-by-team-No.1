@@ -1,13 +1,15 @@
 public class Pilot{
 
     String name;
-    int xp;
+    String nationality;
     Car car;
+    int xp;
 
-    public Pilot(String name, int xp, Car car){
+    public Pilot(String name, String nationality, Car car, int xp){
         this.name = name;
+        this.nationality = nationality;
+        this.car = car;
         this.xp = xp;
-        this car = car;
     }
     public String getName(){
         return name;
