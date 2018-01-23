@@ -15,15 +15,19 @@ public class Main {
                     
             }
         }
-        generateSimulation(num);  
+        Simulator mySimulator = new Simulator(generateSimulation(num),new Logger());
+        Result result = mySimulator.run();
+        System.out.println(result.getFirstSixNames().toString());
     }
     
     public static Simulation generateSimulation(int round)throws FileNotFoundException {
         Race race = new Race();
-        Pilot[] temp = new Pilot[]{};
+        Track track = Track.createTrack();
+        Pilot[] temp = track.getPilots();
         Simulation sim = new Simulation(temp);
-        for(int i = 0; i<round + 1; i++){
-            Pilot[] raceRes = ((sim.run()).getStats()).getResult();
+        for(int i = 0; i<round; i++){
+            Pilot[] raceRes = race.runRace();
+            sim.generateData(sim.FirstSixNames(raceRes));
             sim.makeStatics(sim.load(), raceRes);
             sim.generateData(sim.getPilotArr());
         }
