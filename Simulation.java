@@ -54,7 +54,7 @@ public class Simulation {
 
     public Pilot[] makeStatics(Pilot[] old, Pilot[] res){
         for(int i = 0;i<old.length;i++){
-            old[i].setPoint(res[i].getPoint());
+            old[i].setPoint(old[i].getPoint()+res[i].getPoint());
             old[i].setPenalties(res[i].getPenalties());
         }
         return old;

@@ -2,14 +2,22 @@ public class Statictics {
     Pilot[] result;
 
     public Statictics(Pilot[] result){
-        Simulation simulation = new Simulation();
-        this.result = simulation.load();
+        this.result = result;
     }
 
-    public make Statictics(Pilot[] pilots){
-        
+    public int sumOFPenalties(){
+        int  penalties = 0;
+        for (Pilot pilot :result){
+            penalties +=pilot.getPenalties();
+        }
+        return penalties;
     }
-    public sumOFPenalties(){
-        Race race 
+
+    public double avarageOfPoints(){
+        int  points = 0;
+        for (Pilot pilot :result){
+            points +=pilot.getPoint();
+        }
+        return points / 23;
     }
 }
