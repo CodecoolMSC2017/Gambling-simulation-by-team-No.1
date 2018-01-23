@@ -3,29 +3,26 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class Race {
-    public String[] runRace() throws FileNotFoundException {
+    public Pilot[] runRace() throws FileNotFoundException {
         Track myTrack = Track.createTrack();
         double max = 0.0;
-        String place = "";
-        String str = "";
-        String[] firstSix = new String[6];
-        Logger logger = new Logger();
+        Pilot[] myPilots = myTrack.getPilots();
+        Pilot place =myPilots[0];
+        Pilot[] firstSix = new Pilot[6];
         for (int i = 0; i < 6; i++) {
-            Pilot[] myPilots = myTrack.getPilots();
+            myPilots = myTrack.getPilots();
             for (Pilot pilot : myPilots) {
                 basicScore(pilot);
-                str += randomEvents(pilot);
+                randomEvents(pilot);
                 if (pilot.getPoint() > max) {
                     max = pilot.getPoint();
-                    place = pilot.getName();
-
+                    place = pilot;
                 }
             }
             max = 0;
             firstSix[i] = place;
-            myTrack.removePilot(place);
+            myTrack.removePilot(place.getName());
             }
-        logger.Log("Ide jön a time stamp", str);
         return firstSix;
     }
 
@@ -33,23 +30,22 @@ public class Race {
         pilot.setPoint((pilot.getXp() * 2 + pilot.getCar().getTopSpeed()) / pilot.getCar().getAcceleration());
     }
 
-    public String randomEvents(Pilot pilot) {
+    public void randomEvents(Pilot pilot) {
         Random random = new Random();
         int randomPercent = random.nextInt(pilot.getXp() / 5) + 1;
         if (randomPercent <= 4) {
             int randomEventPercent = random.nextInt(6);
             if (randomEventPercent == 1) {
                 pilot.setPoint(0);
-                return pilot.getName() + " distanced from the race.";
+                pilot.setPenalties();
             } else if (randomEventPercent <= 3) {
                 pilot.setPoint(pilot.getPoint() - 20);
-                return pilot.getName() + " got a drive-through penalty.";
+                pilot.setPenalties();
             } else {
                 pilot.setPoint(pilot.getPoint() - 30);
-                return pilot.getName() + " got a stop-and-go penalty.";
+                pilot.setPenalties();
             }
         }
-        return null;
 
     }
 }
