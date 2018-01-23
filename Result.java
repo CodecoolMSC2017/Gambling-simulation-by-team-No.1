@@ -36,5 +36,16 @@ public class Result {
         String[] asd = set.toArray(new String[set.size()]);
         return asd;
     }
+    
+    public int getSumOfPenalties() {
+        return stats.sumOfPenalties;
+    }
 
+    public double getAverageOfPoints() {
+        return stats.averageOfPoints;
+    }
+
+    public double getAverageSpeed() {
+        return stats.averageSpeed;
+    }
 }

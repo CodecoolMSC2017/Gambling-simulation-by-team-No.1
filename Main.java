@@ -20,12 +20,14 @@ public class Main {
     
     public static Simulation generateSimulation(int round)throws FileNotFoundException {
         Race race = new Race();
-        Simulation sim = new Simulation(race.runRace());
-        for(int i = 0; i<round; i++){
-            Pilot[] raceRes = race.runRace();
+        Pilot[] temp = new Pilot[]{};
+        Simulation sim = new Simulation(temp);
+        for(int i = 0; i<round + 1; i++){
+            Pilot[] raceRes = ((sim.run()).getStats()).getResult();
             sim.makeStatics(sim.load(), raceRes);
             sim.generateData(sim.getPilotArr());
         }
+
         return sim;
     }
 }
