@@ -1,6 +1,11 @@
+import java.io.IOException;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.FileNotFoundException;
+
 public class Simulation {
 
-    public void generateData(Pilot[] pilots) {
+    public void generateData(Pilot[] pilots)throws FileNotFoundException {
         String[] attributes = null;
         try {
 
@@ -12,8 +17,8 @@ public class Simulation {
                 for (String att : attributes) {
                     sb.append(att);
                     collCnt++;
-                    if (collCnt != 6) {
-                        sb.append(",");
+                    if (collCnt != 8) {
+                        sb.append(";");
                     }
 
                 }
@@ -28,12 +33,13 @@ public class Simulation {
         }
     }
 
-    public Pilot[] load() {
-        return PilotReading("firsts.csv");
+    public Pilot[] load()throws FileNotFoundException {
+        Track track = Track.createTrack();
+        return track.PilotReading("firsts.csv");
     }
 
     public String[] decompressPilot(Pilot pilot) {
-        String[] attributes = new String[6];
+        String[] attributes = new String[8];
         attributes[0] = pilot.getName();
         attributes[1] = pilot.getNationality();
         attributes[2] = Integer.toString(pilot.getXp());
@@ -41,6 +47,7 @@ public class Simulation {
         attributes[4] = Integer.toString(pilot.getCar().getTopSpeed());
         attributes[5] = Double.toString(pilot.getCar().getAcceleration());
         attributes[6] = Double.toString(pilot.getPoint());
+        attributes[7] = Integer.toString(pilot.getPenalties());
         return attributes;
 
     }
