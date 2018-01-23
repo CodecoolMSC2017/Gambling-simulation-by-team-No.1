@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.io.FileNotFoundException;
 
 public class Simulator {
     Simulation simulation;
@@ -8,7 +9,7 @@ public class Simulator {
         this.simulation = simulation;
         this.logger = logger;
     }
-    public Result run(){
+    public Result run()throws FileNotFoundException {
         Race race = new Race();
         Simulation simul = new Simulation(race.runRace());
         Statictics stats = new Statictics(simul.getPilotArr());

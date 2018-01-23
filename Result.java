@@ -1,18 +1,20 @@
 import java.util.HashSet;
 import java.util.Set;
+import java.util.List;
+import java.util.Arrays;
 
 public class Result {
     Pilot[] firstSix;
     Statictics stats;
 
-    public Result(Pilot firstSix, Statictics stats){
+    public Result(Pilot[] firstSix, Statictics stats){
         this.firstSix = firstSix;
         this.stats = stats;
     }
-    public getFirstSix(){
+    public Pilot[] getFirstSix(){
         return firstSix;
     }
-    public getStats(){
+    public Statictics getStats(){
         return stats;
     }
     public String[] getFirstSixNames() {
@@ -29,10 +31,10 @@ public class Result {
         for(int i = 0; i < firstSix.length; i++) {
             winnerTeams[i] = (firstSix[i].getCar()).getTeamName();
 
-    }
-    Set<String> set = new HashSet<String>(winnerTeams);
-    String[] asd = set.toArray(new String[set.size()]);
-    return asd;
+        }
+        Set<String> set = new HashSet<>(Arrays.asList(winnerTeams));
+        String[] asd = set.toArray(new String[set.size()]);
+        return asd;
     }
 
 }
