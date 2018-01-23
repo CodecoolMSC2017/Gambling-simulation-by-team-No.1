@@ -17,10 +17,13 @@ public class Result {
     public Statictics getStats(){
         return stats;
     }
-    public String[] getFirstSixNames() {
-        String[] winnersName = new String[6];
-        for(int i = 0; i < firstSix.length; i++) {
-            winnersName[i] = firstSix[i].getName();
+    public String getFirstSixNames() {
+        String winnersName= "";
+        for(int i =0;i<firstSix.length;i++) {
+            winnersName += firstSix[i].getName();
+            if (i !=firstSix.length-1){
+                winnersName += ";";
+            }
             
         }
         return winnersName;

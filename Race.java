@@ -13,28 +13,6 @@ public class Race  {
         return myPilots;
     }
 
-    public Pilot[] FirstSix(Pilot[] pilots) throws FileNotFoundException{
-        Track myTrack = Track.createTrack();
-        Pilot[] myPilots = myTrack.getPilots();
-        Pilot place = myPilots[0];
-        Pilot[] firstSix = new Pilot[6];
-        double max = 0.0;
-        for (int i = 0; i < 6; i++) {
-            myPilots = myTrack.getPilots();
-            for (Pilot pilot : myPilots) {
-                if (pilot.getPoint() > max) {
-                    max = pilot.getPoint();
-                    place = pilot;
-                }
-            }
-            max = 0;
-            firstSix[i] = place;
-            myTrack.removePilot(place.getName());
-        }
-        return firstSix;
-
-    }
-
     public void basicScore(Pilot pilot) {
         pilot.setPoint((pilot.getXp() * 2 + pilot.getCar().getTopSpeed()) / pilot.getCar().getAcceleration());
     }

@@ -10,10 +10,12 @@ public class Simulator {
         this.logger = logger;
     }
     public Result run()throws FileNotFoundException {
-        Race race = new Race();
-        Simulation simul = new Simulation(race.runRace());
-        Statictics stats = new Statictics(simul.getPilotArr());
-        return new Result(race.FirstSix(simul.getPilotArr()), stats);
+        Statictics stats = new Statictics(simulation.getPilotArr());
+        return new Result(simulation.FirstSix(simulation.getPilotArr()), stats);
 
     }
+
+    
+
+
 }
