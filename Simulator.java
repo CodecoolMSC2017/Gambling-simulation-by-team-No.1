@@ -8,49 +8,4 @@ public class Simulator {
         this.simulation = simulation;
         this.logger = logger;
     }
-
-    public Result run() {
-        int max = 0;
-        Pilot first;
-        Logger logger = new Logger();
-        Pilot[] myPilots = simulation.getPilots();
-        for (Pilot pilot : myPilots) {
-            basicScore(pilot);
-            String str = randomEvents(pilot);
-            if (str != null) {
-                logger.Log("Ide jön a time stamp", str);
-            }
-            if (pilot.getPoint() > max){
-                max = pilot.getPoint();
-                first = pilot;
-            }
-
-        }
-        return Result(first,);
-    }
-
-    public void basicScore(Pilot pilot) {
-        pilot.setPoint((pilot.getXp() * 2 + pilot.getCar().getTopSpeed()) / pilot.getCar().getAcceleration());
-    }
-
-    public String randomEvents(Pilot pilot) {
-        Random random = new Random();
-        int randomPercent = random.nextInt(pilot.getXp() / 5) + 1;
-        if (randomPercent <= 4) {
-            int randomEventPercent = random.nextInt(6);
-            if (randomEventPercent == 1) {
-                pilot.setPoints(0);
-                return pilot.getName() + " distanced from the race.";
-            } else if (randomEventPercent <= 3) {
-                pilot.setPoints(pilot.getPoints - 20);
-                return pilot.getName() + " got a drive-through penalty.";
-            } else {
-                pilot.setPoint(pilot.getPoint() - 30);
-                return pilot.getName() + " got a stop-and-go penalty.";
-            }
-        }
-        return null;
-
-    }
-
 }
