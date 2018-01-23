@@ -58,4 +58,15 @@ public class Track{
     public Pilot[] getPilots() {
         return pilots;
     }
+
+    public void removePilot(String name){
+        for (int i = 0; i < pilots.length; i++) {
+            if (pilots[i].getName().equals(name)) {
+                Pilot[] copy = new Pilot[pilots.length - 1];
+                System.arraycopy(pilots, 0, copy, 0, i);
+                System.arraycopy(pilots, i + 1, copy, i, pilots.length - i - 1);
+                pilots = copy;
+            }
+        }
+    }
 }

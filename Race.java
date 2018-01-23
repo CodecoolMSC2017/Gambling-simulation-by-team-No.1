@@ -2,25 +2,31 @@ import java.util.Random;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public class Race{
-    public String runRace() throws FileNotFoundException{
+public class Race {
+    public String[] runRace() throws FileNotFoundException {
         Track myTrack = Track.createTrack();
         double max = 0.0;
-        String first = "";
+        String place = "";
+        String str = "";
+        String[] firstSix = new String[6];
         Logger logger = new Logger();
-        Pilot[] myPilots = myTrack.getPilots();
-        for (Pilot pilot : myPilots) {
-            basicScore(pilot);
-            String str = randomEvents(pilot);
-            if (str != null) {
-                logger.Log("Ide jön a time stamp", str);
+        for (int i = 0; i < 6; i++) {
+            Pilot[] myPilots = myTrack.getPilots();
+            for (Pilot pilot : myPilots) {
+                basicScore(pilot);
+                str += randomEvents(pilot);
+                if (pilot.getPoint() > max) {
+                    max = pilot.getPoint();
+                    place = pilot.getName();
+
+                }
             }
-            if (pilot.getPoint() > max){
-                max = pilot.getPoint();
-                first = pilot.getName();
+            max = 0;
+            firstSix[i] = place;
+            myTrack.removePilot(place);
             }
-        }
-        return first;
+        logger.Log("Ide jön a time stamp", str);
+        return firstSix;
     }
 
     public void basicScore(Pilot pilot) {
