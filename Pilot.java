@@ -32,10 +32,10 @@ public class Pilot {
     }
 
     public double getPoint() {
-        return point;
+        return points;
     }
 
     public void setPoint(double value) {
-        point = value;
+        points = value;
     }
 }
