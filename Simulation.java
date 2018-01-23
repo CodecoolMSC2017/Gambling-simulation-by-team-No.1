@@ -4,6 +4,11 @@ import java.io.FileWriter;
 import java.io.FileNotFoundException;
 
 public class Simulation {
+    Pilot[] result;
+
+    public Simulation(Pilot[] result){
+        this.result = result;
+    }
 
     public void generateData(Pilot[] pilots)throws FileNotFoundException {
         String[] attributes = null;
@@ -52,12 +57,14 @@ public class Simulation {
 
     }
 
-    public Pilot[] makeStatics(Pilot[] old, Pilot[] res){
+    public void makeStatics(Pilot[] old, Pilot[] res){
         for(int i = 0;i<old.length;i++){
             old[i].setPoint(old[i].getPoint()+res[i].getPoint());
             old[i].setPenalties(res[i].getPenalties());
         }
-        return old;
+        result = old;
     }
-
+    public Pilot[] getPilotArr() {
+        return result;
+    }
 }

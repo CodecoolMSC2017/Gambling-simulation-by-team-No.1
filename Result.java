@@ -1,9 +1,9 @@
 public class Result {
     Pilot first;
     
-    Statistics stats;
+    Statictics stats;
 
-    public Result(Pilot first, Statistic stats){
+    public Result(Pilot first, Statictics stats){
         this.first = first;
         this.stats = stats;
     }
