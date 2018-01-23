@@ -52,7 +52,7 @@ public class Track{
     public Pilot createPilot(String[] attrib) {
         return new Pilot(attrib[0], attrib[1], Integer.parseInt(attrib[2]),
                 new Car(attrib[3], Integer.parseInt(attrib[4]), Double.parseDouble(attrib[5])),
-                Double.parseDouble(attrib[6]));
+                Double.parseDouble(attrib[6]),Integer.parseint(attrib[7]));
     }
 
     public Pilot[] getPilots() {

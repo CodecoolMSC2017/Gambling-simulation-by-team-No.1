@@ -5,13 +5,15 @@ public class Pilot {
     int xp;
     Car car;
     double points;
+    int penalties;
 
-    public Pilot(String name, String nationality, int xp, Car car, double points) {
+    public Pilot(String name, String nationality, int xp, Car car, double points, int penalties) {
         this.name = name;
         this.nationality = nationality;
         this.xp = xp;
         this.car = car;
         this.points = points;
+        this.penalties = penalties;
 
     }
 
@@ -37,5 +39,11 @@ public class Pilot {
 
     public void setPoint(double value) {
         points = value;
+    }
+    public int getPenalties(){
+        return penalties;
+    }
+    public void setPenalties(){
+        penalties ++;
     }
 }
