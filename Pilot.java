@@ -43,7 +43,7 @@ public class Pilot {
     public int getPenalties(){
         return penalties;
     }
-    public void setPenalties(){
-        penalties ++;
+    public void setPenalties(int value){
+        penalties += value;
     }
 }
