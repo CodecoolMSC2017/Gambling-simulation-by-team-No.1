@@ -1,13 +1,15 @@
-import java.util.HashMap;
-
 public class Statictics {
-    int numOfSims;
+    Pilot[] result;
 
-    public Statictics(int numOfSims){
-        this.numOfSims = numOfSims;
+    public Statictics(Pilot[] result){
+        Simulation simulation = new Simulation();
+        this.result = simulation.load();
     }
 
-    public void setNumOfSims(){
-        numOfSims++;
+    public make Statictics(Pilot[] pilots){
+        
+    }
+    public sumOFPenalties(){
+        Race race 
     }
 }
