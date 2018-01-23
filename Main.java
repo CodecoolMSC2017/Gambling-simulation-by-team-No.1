@@ -1,9 +1,8 @@
+import java.io.FileNotFoundException;
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args)throws FileNotFoundException{
+    Race race = new Race();
+    System.out.println(race.runRace());
     
-    
-    }
-    public Simulation generateSimulation(int round){
-        
     }
 }
