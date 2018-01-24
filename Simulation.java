@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 public class Simulation {
     Pilot[] result;
@@ -95,11 +97,14 @@ public class Simulation {
         sb.append(";");
         for (int i = 0; i < firstSix.length; i++) {
             sb.append(firstSix[i]);
-            if (i == firstSix.length - 1) {
+            if (i == firstSix.length-1) {
+                sb.append(";");
+                sb.append(loadDatas(firstSix));
                 sb.append("\n");
             } else {
                 sb.append(";");
             }
+
         }
         try {
 
@@ -141,6 +146,35 @@ public class Simulation {
         return track.PilotReading("firsts.csv");
     }
 
+    public int loadDatas(String[] best) throws FileNotFoundException {
+        Track track = Track.createTrack();
+        int numOFLines = track.lineCounter("final.csv");
+        int good = 1;
+        String line = "";
+            try (BufferedReader pilotReader = new BufferedReader(new FileReader("final.csv"))) {
+                while ((line = pilotReader.readLine()) != null) {
+                    int cnt = 0;
+                    String[] attributes = line.split(";");
+                    String[] x = createNameArr(attributes);
+                    for (int i = 0;i<x.length;i++){
+                        if (best[i].equals(x[i])){
+                            cnt++;
+                        }
+                    }
+                    if (cnt == 6){
+                        good++;
+                    }
+
+                    
+                }
+                pilotReader.close();
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+            return good;
+
+        }
+
     public String[] decompressPilot(Pilot pilot) {
         String[] attributes = new String[8];
         attributes[0] = pilot.getName();
@@ -165,5 +199,16 @@ public class Simulation {
 
     public Pilot[] getPilotArr() {
         return result;
+    }
+
+    public String[] createNameArr(String[] splitted) {
+        String[] attributes = new String[6];
+        attributes[0] = splitted[1];
+        attributes[1] = splitted[2];
+        attributes[2] = splitted[3];
+        attributes[3] = splitted[4];
+        attributes[4] = splitted[5];
+        attributes[5] = splitted[6];
+        return attributes;
     }
 }
