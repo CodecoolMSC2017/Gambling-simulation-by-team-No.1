@@ -10,6 +10,7 @@ public class Logger {
         System.out.println(":winners");
         System.out.println(":funfacts");
         System.out.println(":stats");
+        System.out.println(":exit");
         System.out.println("\nChoose :\n");
     }
     

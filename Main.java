@@ -1,5 +1,6 @@
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.lang.System;
 
 public class Main {
     public static void main(String[] args)throws FileNotFoundException{
@@ -35,6 +36,8 @@ public class Main {
             Logger.basicPrinter("Fun facts coming soon!\n");
         } else if(input.equals(":stats")) {
             Logger.basicPrinter("Statistics coming soon!\n");;
+        } else if(input.equals(":exit")) {
+            System.exit(0);
         }
     }
     
