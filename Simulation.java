@@ -3,9 +3,13 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.FileNotFoundException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Simulation {
     Pilot[] result;
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
 
     public Simulation(Pilot[] result) {
         this.result = result;
@@ -38,7 +42,8 @@ public class Simulation {
             ioe.printStackTrace();
         }
     }
-    public Pilot[] FirstSix(Pilot[] pilots){
+
+    public Pilot[] FirstSix(Pilot[] pilots) {
         Pilot place = pilots[0];
         Pilot[] firstSix = new Pilot[6];
         double max = 0.0;
@@ -51,23 +56,23 @@ public class Simulation {
             }
             max = 0;
             firstSix[i] = place;
-            pilots =removePilot(pilots, place.getName());
+            pilots = removePilot(pilots, place.getName());
         }
         return firstSix;
 
     }
 
-    public String[] FirstSixNames(Pilot[] pilot){
+    public String[] FirstSixNames(Pilot[] pilot) {
         Pilot[] firstSix = FirstSix(pilot);
         String[] winnersName = new String[6];
-        for(int i = 0; i < firstSix.length; i++) {
+        for (int i = 0; i < firstSix.length; i++) {
             winnersName[i] = firstSix[i].getName();
-            
+
         }
         return winnersName;
     }
 
-    public Pilot[] removePilot(Pilot[] pilots,String name){
+    public Pilot[] removePilot(Pilot[] pilots, String name) {
         Pilot[] ret = pilots;
         for (int i = 0; i < pilots.length; i++) {
             if (pilots[i].getName().equals(name)) {
@@ -81,51 +86,54 @@ public class Simulation {
     }
 
     public void generateData(String[] firstSix) throws FileNotFoundException {
+
         BufferedWriter bw = null;
         FileWriter fw = null;
         StringBuilder sb = new StringBuilder();
-        for (int i = 0;i<firstSix.length;i++) {
+        Date date = new Date();
+        sb.append(new Timestamp(date.getTime()));
+        sb.append(";");
+        for (int i = 0; i < firstSix.length; i++) {
             sb.append(firstSix[i]);
-            if (i == firstSix.length-1){
+            if (i == firstSix.length - 1) {
                 sb.append("\n");
-            }
-            else{
+            } else {
                 sb.append(";");
             }
         }
+        try {
+
+            File file = new File("final.csv");
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            fw = new FileWriter(file.getAbsoluteFile(), true);
+            bw = new BufferedWriter(fw);
+
+            bw.write(sb.toString());
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        } finally {
+
             try {
 
-                File file = new File("final.csv");
-                if (!file.exists()) {
-                    file.createNewFile();
+                if (bw != null) {
+                    bw.close();
                 }
-                fw = new FileWriter(file.getAbsoluteFile(), true);
-                bw = new BufferedWriter(fw);
 
-                bw.write(sb.toString());
-            } catch (IOException e) {
-
-                e.printStackTrace();
-
-            } finally {
-
-                try {
-
-                    if (bw != null) {
-                        bw.close();
-                    }
-
-                    if (fw != null) {
-                        fw.close();
-                    }
-
-                } catch (IOException ex) {
-
-                    ex.printStackTrace();
-
+                if (fw != null) {
+                    fw.close();
                 }
+
+            } catch (IOException ex) {
+
+                ex.printStackTrace();
+
             }
-        
+        }
+
     }
 
     public Pilot[] load() throws FileNotFoundException {
