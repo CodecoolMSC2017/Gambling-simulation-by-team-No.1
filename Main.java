@@ -1,10 +1,14 @@
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.lang.System;
+import java.util.Date;
 
 public class Main {
+
     public static void main(String[] args)throws FileNotFoundException{
-        Logger.clearScreen();
+        Logger logger = new Logger();
+        final long startTime = System.nanoTime();
+        logger.clearScreen();
         int num = 0;
         if(args.length == 0){
             menus();
@@ -21,21 +25,25 @@ public class Main {
         
         Simulator mySimulator = new Simulator(generateSimulation(num),new Logger());
         Result result = mySimulator.run();
+        final double duration = (System.nanoTime() - startTime)/1000000000.0;
+        String mystr =String.format("%.2f", duration) +" s";
+        logger.Log("Running time:", mystr);
     }
     
     public static void menus() {
-        
-        Logger.printMenu();
+        Logger logger = new Logger();
+        logger.printMenu();
         String input = "";
         Scanner sc = new Scanner(System.in);
         input = sc.nextLine();
+        sc.close();
 
         if(input.equals(":winners")){
-            Logger.basicPrinter("Winners coming soon\n");
+            logger.basicPrinter("Winners coming soon\n");
         } else if(input.equals(":funfacts")) {
-            Logger.basicPrinter("Fun facts coming soon!\n");
+            logger.basicPrinter("Fun facts coming soon!\n");
         } else if(input.equals(":stats")) {
-            Logger.basicPrinter("Statistics coming soon!\n");;
+            logger.basicPrinter("Statistics coming soon!\n");;
         } else if(input.equals(":exit")) {
             System.exit(0);
         }

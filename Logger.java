@@ -4,7 +4,7 @@ public class Logger {
         System.out.println(type + " " + message);
     }
     
-    public static void printMenu() {
+    public  void printMenu() {
         System.out.println("Welcome to Formula 1 betting simmulator\n");
         System.out.println("Menu\n");
         System.out.println(":winners");
@@ -14,12 +14,12 @@ public class Logger {
         System.out.println("\nChoose :\n");
     }
     
-    public static void clearScreen() {  
+    public  void clearScreen() {  
         System.out.print("\033[H\033[2J");  
         System.out.flush();  
     }
     
-    public static void basicPrinter(String str) {
+    public  void basicPrinter(String str) {
         clearScreen();
         System.out.println(str);
         Main.menus();
