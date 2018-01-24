@@ -17,7 +17,7 @@ public class Main {
         }
         Simulator mySimulator = new Simulator(generateSimulation(num),new Logger());
         Result result = mySimulator.run();
-        System.out.println(result.getFirstSixNames().toString());
+        System.out.println(result.getFirstSixNames());
     }
     
     public static Simulation generateSimulation(int round)throws FileNotFoundException {

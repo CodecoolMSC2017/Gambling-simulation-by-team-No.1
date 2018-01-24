@@ -22,7 +22,7 @@ public class Result {
         for(int i =0;i<firstSix.length;i++) {
             winnersName += firstSix[i].getName();
             if (i !=firstSix.length-1){
-                winnersName += ";";
+                winnersName += "; ";
             }
             
         }
