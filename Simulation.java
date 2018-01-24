@@ -99,7 +99,7 @@ public class Simulation {
             sb.append(firstSix[i]);
             if (i == firstSix.length-1) {
                 sb.append(";");
-                sb.append(loadDatas(firstSix));
+                sb.append(cntDatas(firstSix));
                 sb.append("\n");
             } else {
                 sb.append(";");
@@ -146,7 +146,7 @@ public class Simulation {
         return track.PilotReading("firsts.csv");
     }
 
-    public int loadDatas(String[] best) throws FileNotFoundException {
+    public int cntDatas(String[] best) throws FileNotFoundException {
         Track track = Track.createTrack();
         int numOFLines = track.lineCounter("final.csv");
         int good = 1;
@@ -174,6 +174,7 @@ public class Simulation {
             return good;
 
         }
+
 
     public String[] decompressPilot(Pilot pilot) {
         String[] attributes = new String[8];
@@ -211,4 +212,26 @@ public class Simulation {
         attributes[5] = splitted[6];
         return attributes;
     }
+
+    public String[] loadDatas(int colNum) throws FileNotFoundException {
+        Track track = Track.createTrack();
+        int numOFLines = track.lineCounter("final.csv");
+        String line = "";
+        System.out.println(numOFLines);
+        String[] col = new String[numOFLines];
+            try (BufferedReader pilotReader = new BufferedReader(new FileReader("final.csv"))) {
+                for(int i = 0;i<numOFLines;i++) {
+                    line = pilotReader.readLine();
+                    String[] row = line.split(";");
+                    col[i] = row[colNum];
+                }
+
+                    
+                pilotReader.close();
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+            return col;
+
+        }
 }
