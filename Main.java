@@ -1,10 +1,12 @@
 import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args)throws FileNotFoundException{
-        
+        Logger.clearScreen();
         int num = 0;
         if(args.length == 0){
-            num = 1;
+            menus();
         }else{
             try
             {
@@ -15,9 +17,25 @@ public class Main {
                     
             }
         }
+        
         Simulator mySimulator = new Simulator(generateSimulation(num),new Logger());
         Result result = mySimulator.run();
-        System.out.println(result.getFirstSixNames());
+    }
+    
+    public static void menus() {
+        
+        Logger.printMenu();
+        String input = "";
+        Scanner sc = new Scanner(System.in);
+        input = sc.nextLine();
+
+        if(input.equals(":winners")){
+            Logger.basicPrinter("Winners coming soon\n");
+        } else if(input.equals(":funfacts")) {
+            Logger.basicPrinter("Fun facts coming soon!\n");
+        } else if(input.equals(":stats")) {
+            Logger.basicPrinter("Statistics coming soon!\n");;
+        }
     }
     
     public static Simulation generateSimulation(int round)throws FileNotFoundException {
