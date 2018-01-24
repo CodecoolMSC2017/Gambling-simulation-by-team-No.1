@@ -14,6 +14,7 @@ public class Simulator {
         return new Result(simulation.FirstSix(simulation.getPilotArr()), stats);
 
     }
+    
 
     
 

@@ -97,7 +97,7 @@ public class Simulation {
         sb.append(";");
         for (int i = 0; i < firstSix.length; i++) {
             sb.append(firstSix[i]);
-            if (i == firstSix.length-1) {
+            if (i == firstSix.length - 1) {
                 sb.append(";");
                 sb.append(cntDatas(firstSix));
                 sb.append("\n");
@@ -151,30 +151,28 @@ public class Simulation {
         int numOFLines = track.lineCounter("final.csv");
         int good = 1;
         String line = "";
-            try (BufferedReader pilotReader = new BufferedReader(new FileReader("final.csv"))) {
-                while ((line = pilotReader.readLine()) != null) {
-                    int cnt = 0;
-                    String[] attributes = line.split(";");
-                    String[] x = createNameArr(attributes);
-                    for (int i = 0;i<x.length;i++){
-                        if (best[i].equals(x[i])){
-                            cnt++;
-                        }
+        try (BufferedReader pilotReader = new BufferedReader(new FileReader("final.csv"))) {
+            while ((line = pilotReader.readLine()) != null) {
+                int cnt = 0;
+                String[] attributes = line.split(";");
+                String[] x = createNameArr(attributes);
+                for (int i = 0; i < x.length; i++) {
+                    if (best[i].equals(x[i])) {
+                        cnt++;
                     }
-                    if (cnt == 6){
-                        good++;
-                    }
-
-                    
                 }
-                pilotReader.close();
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
+                if (cnt == 6) {
+                    good++;
+                }
+
             }
-            return good;
-
+            pilotReader.close();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
         }
+        return good;
 
+    }
 
     public String[] decompressPilot(Pilot pilot) {
         String[] attributes = new String[8];
@@ -217,21 +215,66 @@ public class Simulation {
         Track track = Track.createTrack();
         int numOFLines = track.lineCounter("final.csv");
         String line = "";
-        System.out.println(numOFLines);
         String[] col = new String[numOFLines];
-            try (BufferedReader pilotReader = new BufferedReader(new FileReader("final.csv"))) {
-                for(int i = 0;i<numOFLines;i++) {
-                    line = pilotReader.readLine();
-                    String[] row = line.split(";");
-                    col[i] = row[colNum];
-                }
-
-                    
-                pilotReader.close();
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
+        try (BufferedReader pilotReader = new BufferedReader(new FileReader("final.csv"))) {
+            for (int i = 0; i < numOFLines; i++) {
+                line = pilotReader.readLine();
+                String[] row = line.split(";");
+                col[i] = row[colNum];
             }
-            return col;
 
+            pilotReader.close();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
         }
+        return col;
+
+    }
+
+    public String[] getBest() throws FileNotFoundException{
+        String[] percentsStrings = loadDatas(7);
+        int[] percent = new int[percentsStrings.length];
+        for (int i = 0; i < percentsStrings.length; i++) {
+            percent[i] = Integer.parseInt(percentsStrings[i]);
+        }
+
+        int max = 0;
+        for (int i = 0; i < percent.length; i++) {
+            if (percent[i] > max) {
+                max = percent[i];
+            }
+        }
+        int row = 0;
+        for (int i = 0; i < percent.length; i++) {
+            if (max == percent[i]) {
+                row = i;
+            }
+        }
+        Track track = Track.createTrack();
+        int numOFLines = track.lineCounter("final.csv");
+        String line = "";
+        String[] myRow = new String[8];
+        try (BufferedReader pilotReader = new BufferedReader(new FileReader("final.csv"))) {
+            for (int i = 0; i < numOFLines; i++) {
+                line = pilotReader.readLine();
+                if (i == row) {
+                    myRow = line.split(";");
+                }
+            }
+            pilotReader.close();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+        
+        String[] ret = new String[7];
+        ret[0] = myRow[1]+" ";
+        ret[1] = myRow[2]+" ";
+        ret[2] = myRow[3]+" ";
+        ret[3] = myRow[4]+" ";
+        ret[4] = myRow[5]+ " ";
+        ret[5] = myRow[6]+" ";
+        ret[6] = Double.toString((Double.parseDouble(myRow[7])/numOFLines)*100)+" %";
+        return ret;
+        
+    }
 }
