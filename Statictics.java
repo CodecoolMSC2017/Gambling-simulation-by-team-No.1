@@ -35,8 +35,14 @@ public class Statictics {
         }
         return speed / 23;
     }
+    
     public Pilot[] getResult() {
         return result;
+    }
+
+    public double avgPenaltiesPerPilot(){
+        int divident = sumOfPenalties;
+        return ((double)divident) / 23.0;
     }
 
 }

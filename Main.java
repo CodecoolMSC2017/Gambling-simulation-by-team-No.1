@@ -49,16 +49,17 @@ public class Main {
 
             if(inputMenu.equals(":winners")){
                 logger.clearScreen();
-                logger.StrArrPrinter("Best chance to the first six place :",simulator.simulation.getBest());
+                logger.StrArrPrinter("Best chance to the first six place: ",simulator.simulation.getBest());
             } else if(inputMenu.equals(":funfacts")) {
                 logger.clearScreen();
-                logger.basicPrinter("Total penalties: " + Integer.toString(result.getSumOfPenalties()) + "\n");
-                logger.basicPrinter("Average points per simulation: "+ Double.toString(result.getAverageOfPoints()) + "\n");
-                logger.basicPrinter("Average speed per simulation: " + Double.toString(result.getAverageSpeed()) + "\n");
+                logger.Log("\nTotal penalties:\n","\t" +  Integer.toString(result.getSumOfPenalties()));
+                logger.Log("\nAverage penalties (per pilot):\n","\t" +  Double.toString(result.getAvgPenalties()));
+                logger.Log("\nAverage points per simulation:\n" , "\t" + Double.toString(result.getAverageOfPoints()));
+                logger.Log("\nAverage speed per simulation:\n" , "\t" +  Double.toString(result.getAverageSpeed()));
             } else if(inputMenu.equals(":stats")) {
                 logger.clearScreen();
-                logger.basicPrinter("First six based on all simulation: " + result.getFirstSixNames() + "\n");
-                logger.StrArrPrinter("Names of the winner teams: ",result.getWinnerTeams());
+                logger.Log("\nFirst six based on all simulation\n " , "\t" + result.getFirstSixNames());
+                logger.StrArrPrinter("\nNames of the winner teams:",result.getWinnerTeams());
             } else if(inputMenu.equals(":exit")) {
                 sc.close();
                 System.exit(0);

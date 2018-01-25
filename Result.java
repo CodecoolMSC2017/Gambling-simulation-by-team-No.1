@@ -51,4 +51,8 @@ public class Result {
     public double getAverageSpeed() {
         return stats.averageSpeed;
     }
+
+    public double getAvgPenalties() {
+        return stats.avgPenaltiesPerPilot();
+    }
 }
