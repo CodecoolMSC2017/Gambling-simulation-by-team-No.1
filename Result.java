@@ -39,6 +39,16 @@ public class Result {
         String[] asd = set.toArray(new String[set.size()]);
         return asd;
     }
+    public String[] getWinnerNationalities() {
+        String[] winnerNationalities = new String[6];
+        for(int i = 0; i < firstSix.length; i++) {
+            winnerNationalities[i] = firstSix[i].getNationality();
+
+        }
+        Set<String> set = new HashSet<>(Arrays.asList(winnerNationalities));
+        String[] asd = set.toArray(new String[set.size()]);
+        return asd;
+    }
     
     public int getSumOfPenalties() {
         return stats.sumOfPenalties;

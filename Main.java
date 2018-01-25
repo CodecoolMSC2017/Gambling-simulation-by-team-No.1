@@ -59,6 +59,7 @@ public class Main {
             } else if(inputMenu.equals(":stats")) {
                 logger.clearScreen();
                 logger.Log("\nFirst six based on all simulation\n " , "\t" + result.getFirstSixNames());
+                logger.StrArrPrinter("\nNationality of the winners:",result.getWinnerNationalities());
                 logger.StrArrPrinter("\nNames of the winner teams:",result.getWinnerTeams());
             } else if(inputMenu.equals(":exit")) {
                 sc.close();
