@@ -6,8 +6,10 @@ import java.util.Date;
 public class Main {
 
     public static void main(String[] args)throws FileNotFoundException{
-        Logger logger = new Logger();
         final long startTime = System.nanoTime();
+        Logger logger = new Logger();
+        Simulation simulation = new Simulation(Track.createTrack().getPilots());
+        simulation.reset();
         logger.clearScreen();
         int num = 0;
         if(args.length == 0){

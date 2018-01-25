@@ -16,6 +16,9 @@ public class Simulation {
     public Simulation(Pilot[] result) {
         this.result = result;
     }
+    public void reset() throws FileNotFoundException{
+        generateData(Track.createTrack().getPilots());
+    }
 
     public void generateData(Pilot[] pilots) throws FileNotFoundException {
         String[] attributes = null;
@@ -148,7 +151,6 @@ public class Simulation {
 
     public int cntDatas(String[] best) throws FileNotFoundException {
         Track track = Track.createTrack();
-        int numOFLines = track.lineCounter("final.csv");
         int good = 1;
         String line = "";
         try (BufferedReader pilotReader = new BufferedReader(new FileReader("final.csv"))) {
