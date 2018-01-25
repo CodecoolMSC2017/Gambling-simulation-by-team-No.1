@@ -20,8 +20,12 @@ public class Logger {
     }
     
     public  void basicPrinter(String str) {
-        clearScreen();
         System.out.println(str);
-        Main.menus();
+    }
+    public void StrArrPrinter(String messages, String[] str) {
+        System.out.println(messages);
+        for(String string : str) {
+            System.out.println(string);
+        }
     }
 }

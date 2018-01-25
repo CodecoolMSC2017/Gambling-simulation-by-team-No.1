@@ -3,9 +3,11 @@ public class Statictics {
     int sumOfPenalties;
     double averageOfPoints;
     double averageSpeed;
+    int round;
 
-    public Statictics(Pilot[] result){
+    public Statictics(Pilot[] result, int round){
         this.result = result;
+        this.round = round;
         this.sumOfPenalties = sumOFPenalties();
         this.averageOfPoints = averageOfPoints();
         this.averageSpeed = averageSpeed();
@@ -23,7 +25,7 @@ public class Statictics {
         for (Pilot pilot :result){
             points +=pilot.getPoint();
         }
-        return points / 23;
+        return points / 23 / round;
     }
     
     public double averageSpeed(){
